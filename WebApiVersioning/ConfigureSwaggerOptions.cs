@@ -28,7 +28,7 @@ public class ConfigureSwaggerOptions(IApiVersionDescriptionProvider provider)
     /// </summary>
     /// <param name="name"></param>
     /// <param name="options"></param>
-    public void Configure(string name, SwaggerGenOptions options)
+    public void Configure(string? name, SwaggerGenOptions options)
     {
         Configure(options);
     }
@@ -42,15 +42,15 @@ public class ConfigureSwaggerOptions(IApiVersionDescriptionProvider provider)
     /// <param name="description"></param>
     /// <returns>Information about the API</returns>
     private OpenApiInfo CreateVersionInfo(
-        ApiVersionDescription desc)
+        ApiVersionDescription description)
     {
         var info = new OpenApiInfo()
         {
-            Title = ".NET Core (.NET 6) Web API",
-            Version = desc.ApiVersion.ToString()
+            Title = ".NET Web API Versioning",
+            Version = description.ApiVersion.ToString()
         };
 
-        if (desc.IsDeprecated)
+        if (description.IsDeprecated)
         {
             info.Description += " This API version has been deprecated. Please use one of the new APIs available from the explorer.";
         }
