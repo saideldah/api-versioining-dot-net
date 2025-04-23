@@ -52,4 +52,19 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4.0.5
+      - name: Comment on Pull Request with Report Link
+        uses: actions/github-script@v7
+        id: set-result
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+            if (pr) {
+              const comment = `The coverage report is available [here](https://saideldah.github.io/api-versioining-dot-net).`;
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: pr.number,
+                body: comment
+              });
+            }
 
