@@ -1,6 +1,8 @@
 using Asp.Versioning;
 using Asp.Versioning.ApiExplorer;
 
+namespace WebApiVersioning;
+
 internal class Program
 {
     private static void Main(string[] args)
@@ -21,8 +23,8 @@ internal class Program
             opt.AssumeDefaultVersionWhenUnspecified = true;
             opt.ReportApiVersions = true;
             opt.ApiVersionReader = ApiVersionReader.Combine(new UrlSegmentApiVersionReader(),
-                                                            new HeaderApiVersionReader("x-api-version"),
-                                                            new MediaTypeApiVersionReader("x-api-version"));
+                new HeaderApiVersionReader("x-api-version"),
+                new MediaTypeApiVersionReader("x-api-version"));
         }).AddApiExplorer(options =>
         {
             options.GroupNameFormat = "'v'VVV";
