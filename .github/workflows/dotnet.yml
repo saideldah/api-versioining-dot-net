@@ -32,6 +32,14 @@ jobs:
           ls -la coverage-report
       - name: Verify Coverage Report Path
         run: ls -la coverage-report
+      - name: Verify Coverage Threshold
+        run: |
+          COVERAGE=$(grep -oP '(?<=<coverage line-rate=")[0-9.]+(?=")' coverage-report/Summary.xml | awk '{print $1 * 100}')
+          echo "Coverage: $COVERAGE%"
+          if (( $(echo "$COVERAGE < 90" | bc -l) )); then
+            echo "Test coverage is below 90%. Failing the build."
+            exit 1
+          fi
       - name: Upload Coverage Report
         uses: actions/upload-artifact@v4.6.2
         with:
