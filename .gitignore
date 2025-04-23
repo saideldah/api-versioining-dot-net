@@ -348,3 +348,25 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# Rider-specific
+.idea/
+*.sln.iml
+
+
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Build results
+bin/
+obj/
+out/
+
+# Rider caches and logs
+.idea/*
+!.idea/runConfigurations/
+
+# Optional: Uncomment if you're using Mono
+.mono/
