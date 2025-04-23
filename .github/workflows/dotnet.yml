@@ -33,8 +33,8 @@ jobs:
           ls -la coverage-report
       - name: Verify Coverage Report Path
         run: ls -la coverage-report
-      - name: Upload Coverage Report
-        uses: actions/upload-artifact@v3
-        with:
-          name: coverage-report
-          path: coverage-report
+#      - name: Upload Coverage Report
+#        uses: actions/upload-artifact@v3
+#        with:
+#          name: coverage-report
+#          path: coverage-report
