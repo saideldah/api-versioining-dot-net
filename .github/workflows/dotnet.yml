@@ -11,7 +11,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -24,16 +23,16 @@ jobs:
         run: dotnet restore
       - name: Build
         run: dotnet build --no-restore
-
       - name: Test with Coverage
         run: dotnet test --collect:"XPlat Code Coverage" --no-build --verbosity normal
-
       - name: Install ReportGenerator
         run: dotnet tool install -g dotnet-reportgenerator-globaltool
-
       - name: Generate Coverage Report
-        run: reportgenerator -reports:"**/coverage.cobertura.xml" -targetdir:coverage-report -reporttypes:Html
-
+        run: |
+          reportgenerator -reports:"**/coverage.cobertura.xml" -targetdir:coverage-report -reporttypes:Html
+          ls -la coverage-report
+      - name: Verify Coverage Report Path
+        run: ls -la coverage-report
       - name: Upload Coverage Report
         uses: actions/upload-artifact@v3
         with:
