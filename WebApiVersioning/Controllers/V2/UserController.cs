@@ -1,21 +1,19 @@
 using Asp.Versioning;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebApiVersioningTest.Controllers.V1;
+namespace WebApiVersioning.Controllers.V2;
 
 
 [ApiController]
 [Route("api/v{version:apiVersion}/[controller]")]
 [Route("api/[controller]")]
-[ApiVersion("1.0")]
+[ApiVersion("2.0")]
 public class UserController : ControllerBase
 {
-
-
-    [MapToApiVersion("1.0")]
+    [MapToApiVersion("2.0")]
     [HttpGet]
     public IActionResult Get()
     {
-        return Ok("V1");
+        return Ok("V2");
     }
 }
