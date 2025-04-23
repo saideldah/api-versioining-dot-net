@@ -3,7 +3,7 @@ using Asp.Versioning.ApiExplorer;
 
 namespace WebApiVersioning;
 
-internal class Program
+public class Program
 {
     private static void Main(string[] args)
     {
