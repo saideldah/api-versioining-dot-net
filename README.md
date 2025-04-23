@@ -1,5 +1,8 @@
 # API Versioning in .NET with Swagger
 
+[![Build Status](https://github.com/saideldah/api-versioining-dot-net/actions/workflows/dotnet.yml/badge.svg)](https://github.com/saideldah/api-versioining-dot-net/actions)
+[![Coverage Report](https://img.shields.io/badge/Coverage-Report-blue)](https://saideldah.github.io/api-versioining-dot-net)
+
 This repository demonstrates how to implement API versioning in a .NET application using Swagger for API documentation. It provides a sample project showcasing best practices for managing multiple API versions effectively.
 
 ## Features
