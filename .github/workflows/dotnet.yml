@@ -12,7 +12,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
       - name: Setup .NET
@@ -39,3 +38,18 @@ jobs:
           name: coverage-report
           path: coverage-report
           if-no-files-found: error
+      - name: Upload Coverage Report Artifact
+        uses: actions/upload-pages-artifact@v3.0.1
+        with:
+          path: coverage-report
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4.0.5
+
